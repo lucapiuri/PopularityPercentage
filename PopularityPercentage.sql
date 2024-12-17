@@ -11,7 +11,7 @@
 
 -- The 'user1' and 'user2' column are pairs of friends.
 
--- user1	 user2
+-- user1    user2
 -- 2	      1
 -- 1	      3
 -- 4	      1
