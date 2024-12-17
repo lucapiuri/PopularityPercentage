@@ -14,9 +14,9 @@ CREATE TABLE facebook_friends(
 -- The 'user1' and 'user2' columns are "pairs of friends".
 INSERT INTO facebook_friends (user1, user2)
 VALUES 
-(2,1), 
-(1,3),
-(4,1),
+(2, 1), 
+(1, 3),
+(4, 1),
 (1,	5),
 (1,	6),
 (2,	6),
