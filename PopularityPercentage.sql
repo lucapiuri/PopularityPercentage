@@ -1,7 +1,11 @@
--- # PopularityPercentage
--- Solving popularity percentage problem 
+-- ------------------------------------------------------------------
+--                     POPULARITY PERCENTAGE
+-- ------------------------------------------------------------------
 
---  Using SQL to solve a problem with a simplified facebook_friends dataset
+-- Solving "Popularity Percentage" problem 
+-- Meta interview question from stratascratch.com
+
+-- solving a problem by using SQL queries on a simple "facebook friends" dataset
 
 -- THE CHALLENGE:
 -- Find the popularity percentage for each user on Meta/Facebook. The popularity percentage is defined as the total number of friends 
