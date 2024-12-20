@@ -99,9 +99,36 @@ create temporary table uber_2 as
 select Y_m, abs(round(dist-avg,2)) as "abs" 
 from uber_1;
 
-
 --@block
 -- This final query to Temporary Table 2 is used to group the rows by their "Year-month" tag:
 select Y_m, round(avg(abs),2)
 from uber_2
 group by Y_m;
+
+
+-- Here I used the same "process", but expressed with nested queries instead of relying on temporary tables:
+
+--@block
+-- Here using NESTED QUERIES instead of Temp Tables
+SELECT Y_m, round(avg(abs),2)
+     FROM(
+        SELECT Y_m, abs(round(dist-avg,2)) as "abs"  
+        FROM(
+                    SELECT 
+                    request_date,
+            
+                    DATE_FORMAT(request_date, '%Y-%m') as 'Y_m',
+            
+                    round(
+                        AVG(distance_to_travel/monetary_cost)
+                    OVER (PARTITION BY request_date), 2) as "dist",
+            
+                    round(
+                    AVG(distance_to_travel/monetary_cost) 
+                    OVER (PARTITION BY DATE_FORMAT(request_date, '%Y-%m')), 2) 
+                    as "avg"
+            
+                    from uber_request_logs) as derived_1
+    ) as derived_2
+    group by Y_m;
+    
